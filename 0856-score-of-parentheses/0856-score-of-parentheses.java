@@ -1,3 +1,7 @@
+// TC : O(n)
+// SC : O(n)
+
+
 class Solution {
     public int scoreOfParentheses(String s) {
         int cnt = 0;
