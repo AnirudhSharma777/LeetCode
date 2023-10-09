@@ -14,9 +14,14 @@ class Solution {
             return head;
         }
         
-        ListNode chotahead = reverseList(head.next);
-        head.next.next = head;
-        head.next = null;
-        return chotahead;
+        ListNode cur = head;
+        ListNode prev = null,next = null;
+        while(cur != null){
+            next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+        }
+        return prev;
     }
 }
