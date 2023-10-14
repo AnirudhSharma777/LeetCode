@@ -1,26 +1,20 @@
-// recursive Solution
+// using two pointer
 
 class Solution {
     public int removeDuplicates(int[] nums) {
-        return solve(0,0,0,nums.length,nums);
-    }
-    
-    public int solve(int i,int j,int count,int n,int[] nums){
-        if(i == n){
-            return j;
-        }
         
-        if(i > 0 && nums[i] == nums[i-1]){
-            count++;
+       int start = 0;
+        int end = 0;
+        for(start = 0; start < nums.length; start++){
+            
+            if(start < nums.length - 2 && nums[start] == nums[start+1] && nums[start] == nums[start+2]){
+                continue;
+            }
+            else{
+                nums[end] = nums[start];
+                end++;
+            }
         }
-        else{
-            count = 1;
-        }
-        
-        if(count <= 2){
-            nums[j++] = nums[i];
-        }
-        
-        return solve(i+1,j,count,n,nums);
+        return end;
     }
 }
