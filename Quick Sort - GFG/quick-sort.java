@@ -49,37 +49,24 @@ class Solution
     static int partition(int arr[], int low, int high)
     {
         // your code here
-        int pivot = arr[low];
-        int cnt = 0;
-        for(int i = low+1; i<=high; i++){
-            if(arr[i] <= pivot){
-                cnt++;
-            }
-        }
-        
-        int partitionIndex = low + cnt;
-        arr[low] = arr[partitionIndex];
-        arr[partitionIndex] = pivot;
-        
-        int i = low, j = high;
-        while(i <= j){
-            while(i<=j && arr[i] <= pivot){
-                i++;
-            }
-            while(arr[j] > pivot){
-                j--;
-            }
-            
-            if(i<=j){
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-                i++;
-                j--;
-            }
-        }
-        
-        return partitionIndex;
+       int pivot = arr[high];
+       int i = low - 1;
+       for(int j = low; j<=high-1; j++){
+           if(arr[j] <= pivot){
+               i++;
+               
+               int temp = arr[i];
+               arr[i] = arr[j];
+               arr[j] = temp;
+           }
+       }
+       
+       i++;
+       int temp = arr[i];
+       arr[i] = arr[high];
+       arr[high] = temp;
+       
+       return i;
         
         
     } 
