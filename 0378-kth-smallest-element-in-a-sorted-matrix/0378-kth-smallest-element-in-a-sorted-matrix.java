@@ -6,9 +6,11 @@ class Solution {
         int high = matrix[n-1][n-1];
         int kth_value = 0;
         
+        //O(n+m * logn(n))
         while(low <= high){
             int mid = low + (high - low) / 2;
             
+            // O(log(n+m))
             int count = getElementAllSmallest(matrix,mid,n);
             if(count >= k){
                 kth_value = mid;
