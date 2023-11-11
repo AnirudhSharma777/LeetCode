@@ -15,6 +15,9 @@ class Solution {
     //     step 2: 
     //     step 3: reverse LL and return head
     
+    // time complexity is O(n);
+    // space complexity is O(1);
+    
     private ListNode reverse(ListNode head){
         if(head == null || head.next == null){
             return head;
