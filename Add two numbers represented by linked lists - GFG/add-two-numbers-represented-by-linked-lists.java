@@ -78,48 +78,54 @@ class Node {
 */
 
 class Solution{
-    //Function to add two numbers represented by linked list.
+    
     static Node reverseLL(Node head){
         if(head == null || head.next == null){
             return head;
         }
-        Node chotahead = reverseLL(head.next);
-        head.next.next = head;
-        head.next = null;
-        return chotahead;
+        Node cur = head;
+        Node prev = null;
+        Node next = null;
+        while(cur != null){
+            next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+        }
+        return prev;
     }
+    //Function to add two numbers represented by linked list.
     static Node addTwoLists(Node first, Node second){
         // code here
-        Node f = reverseLL(first);
-        Node s = reverseLL(second);
+        first = reverseLL(first);
+        second = reverseLL(second);
         
         int carry = 0;
         Node dummy = new Node(0);
         Node temp = dummy;
-        while(f != null || s != null){
+        while(first != null || second != null){
             int sum = 0;
-            if(f != null){
-                sum += f.data;
-                f = f.next;
+            if(first != null){
+                sum += first.data;
+                first = first.next;
             }
-            if(s != null){
-                sum += s.data;
-                s = s.next;
+            if(second != null){
+                sum += second.data;
+                second = second.next;
             }
+            
             sum += carry;
             carry = sum / 10;
-            Node node = new Node(sum%10);
+            Node node = new Node(sum % 10);
             temp.next = node;
             temp = temp.next;
         }
         
         if(carry != 0){
-            Node node = new Node(carry);
-            temp.next = node;
+            temp.next = new Node(carry);
         }
-        
-        
         return reverseLL(dummy.next);
         // return head of sum list
+        
     }
 }
