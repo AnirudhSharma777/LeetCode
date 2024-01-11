@@ -1,5 +1,6 @@
+
 class Solution {
-    public int trap(int[] height) {
+    public int trap(int[] height) { // Tc : O(n) & Sc : O(n)
         Stack<Integer> st = new Stack<>();
         int n = height.length,ans = 0;
         for(int i = 0; i<n; i++){
