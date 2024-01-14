@@ -15,32 +15,32 @@
  */
 class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        
         List<List<Integer>> ans = new ArrayList<>();
         if(root == null){
             return ans;
         }
-        Deque<TreeNode> queue = new ArrayDeque<>();
-        boolean leftToright = true;
-        queue.offer(root);
-        while(!queue.isEmpty()){
-            int size = queue.size();
+        Deque<TreeNode> dq = new ArrayDeque<>();
+        dq.offer(root);
+        boolean isleftToRight = true;
+        while(!dq.isEmpty()){
+            int size = dq.size();
             Integer[] subArray = new Integer[size];
             for(int i = 0; i<size; i++){
-                TreeNode r = queue.peek();
-                if(r.left != null){
-                    queue.offer(r.left);
+                TreeNode cur = dq.peek();
+                if(cur.left != null){
+                    dq.offer(cur.left);
                 }
-                if(r.right != null){
-                    queue.offer(r.right);
+                if(cur.right != null){
+                    dq.offer(cur.right);
                 }
-                int index = leftToright ? i : size - i - 1;
-                TreeNode node = queue.poll();
+                int index = isleftToRight ? i : size - i - 1;
+                TreeNode node = dq.poll();
                 subArray[index] = node.val;
             }
-            leftToright = !leftToright;
+            isleftToRight = !isleftToRight;
             ans.add(Arrays.asList(subArray));
         }
         return ans;
     }
+    
 }
