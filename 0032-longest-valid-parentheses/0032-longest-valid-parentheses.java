@@ -3,18 +3,21 @@ class Solution {
         Stack<Integer> st = new Stack<>();
         st.push(-1);
         int cnt = 0;
-        for(int i = 0; i<s.length(); i++){
-            if(s.charAt(i) == '('){
+        char[] ch = s.toCharArray();
+        for(int i = 0; i<ch.length; i++){
+            if(ch[i] == '('){
                 st.push(i);
             }
             else{
                 st.pop();
                 if(!st.isEmpty()){
                     cnt = Math.max(cnt,i-st.peek());
-                }else{
+                }
+                else{
                     st.push(i);
                 }
             }
+            
         }
         return cnt;
     }
