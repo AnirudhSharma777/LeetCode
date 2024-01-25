@@ -1,20 +1,17 @@
-// using two pointer
-
 class Solution {
     public int removeDuplicates(int[] nums) {
         
-       int start = 0;
-        int end = 0;
-        for(start = 0; start < nums.length; start++){
+        int i = 0;
+        int j = 0;
+        for(i = 0;i<nums.length; i++){
             
-            if(start < nums.length - 2 && nums[start] == nums[start+1] && nums[start] == nums[start+2]){
+            if(i < nums.length - 2 && nums[i] == nums[i+1] && nums[i] == nums[i+2]){
                 continue;
             }
             else{
-                nums[end] = nums[start];
-                end++;
+                nums[j++] = nums[i];
             }
         }
-        return end;
+        return j;
     }
 }
