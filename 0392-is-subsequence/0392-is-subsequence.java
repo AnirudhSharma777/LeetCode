@@ -4,7 +4,7 @@ class Solution {
         return ans == s.length();
     }
     
-    public int solve(int i,int j,String s,String t){
+    int solve(int i,int j,String s,String t){
         if(i == s.length() || j == t.length()){
             return 0;
         }
