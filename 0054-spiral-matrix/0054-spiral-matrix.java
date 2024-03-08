@@ -8,7 +8,7 @@ class Solution {
         int cnt = 0;
         while(cnt < size){
             for(int i = left; i<=right && cnt < size; i++){
-                list.add(matrix[left][i]);
+                list.add(matrix[top][i]);
                 cnt++;
             }
             top++;
