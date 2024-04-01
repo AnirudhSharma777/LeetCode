@@ -1,6 +1,6 @@
 class Solution {
-    public int[] maxSlidingWindow(int[] nums, int k) {
-        
+    public int[] maxSlidingWindow(int[] nums, int k) { // TC : O(n) + O(n) = O(n)
+                                                       // SC : O(n)
         int n = nums.length;
         int[] ans = new int[n-k+1];
         int r = 0;
