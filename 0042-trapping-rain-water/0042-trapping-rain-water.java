@@ -22,4 +22,52 @@ class Solution {
         return water;
         
     }
+
+    
+// Using Stack
+ public int trap(int[] height) {
+        int n = height.length;
+        Stack<Integer> st = new Stack<>();
+        int water = 0;
+        int cur = 0;
+        
+        while(cur < n){
+            
+            while(!st.isEmpty() && height[cur] > height[st.peek()]){
+                int top = st.pop();
+                if(st.isEmpty()){
+                    break;
+                }
+                int d = cur-st.peek() - 1;
+                int fill = d * (Math.min(height[cur],height[st.peek()]) - height[top]);
+                water += fill;
+            }
+            st.push(cur++);
+        }
+        return water;
+    }
+
+    // Using Two Pointer
+     public int trap(int[] height) {
+        int n = height.length;
+        int i = 0, j = n-1;
+        int leftmax = 0;
+        int rightmax = 0;
+        int water = 0;
+        
+        
+        while(i < j){
+            if(height[i] <= height[j]){
+                leftmax = Math.max(leftmax,height[i]);
+                water += leftmax - height[i];
+                i++;
+            }
+            else{
+                rightmax = Math.max(rightmax,height[j]);
+                water += rightmax - height[j];
+                j--;
+            }
+        }
+        return water;
+    }
 }
