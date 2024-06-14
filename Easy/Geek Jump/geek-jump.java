@@ -30,30 +30,78 @@ class GFG{
 
 //User function Template for Java
 
+
 class Solution{
-    public int minimumEnergy(int arr[],int N){
-        //code here
-        int[] dp = new int[N+1];
-        Arrays.fill(dp,-1);
-        return helper(arr,N-1,dp);
+    // Using recursion + memoization
+    // Tc : O(n) & sc: O(n)
+    // public int minimumEnergy(int arr[],int N){
+    //     //code here
+    //     int[] dp = new int[N+1];
+    //     Arrays.fill(dp,-1);
+    //     return helper(N-1,arr,dp);
+    // }
+    
+    // private int helper(int n,int[] height,int[] dp){
+        
+    //     if(n == 0){
+    //         return 0;
+    //     }
+        
+    //     if(dp[n] != -1){
+    //         return dp[n];
+    //     }
+        
+    //     int singleSteps = helper(n-1,height,dp) + Math.abs(height[n] - height[n-1]);
+    //     int doubleSteps = Integer.MAX_VALUE;
+    //     if(n > 1){
+    //         doubleSteps = helper(n-2,height,dp) + Math.abs(height[n] - height[n-2]);
+    //     }
+        
+    //     dp[n] = Math.min(singleSteps,doubleSteps);
+    //     return dp[n];
+    // }
+    
+    // tabulation Solution
+    // Tc : O(n) & sc:O(n)
+    // public int minimumEnergy(int[] height,int n){
+        
+    //     int[] dp = new int[n+1];
+    //     dp[0] = 0;
+        
+    //     for(int i = 1; i<=n-1; i++){
+    //         int left = dp[i-1] + Math.abs(height[i] - height[i-1]);
+    //         int right = Integer.MAX_VALUE;
+    //         if(i > 1){
+    //             right = dp[i-2] + Math.abs(height[i] - height[i-2]);
+    //         }
+            
+    //         dp[i] = Math.min(left,right);
+    //     }
+        
+    //     return dp[n-1];
+    // }
+    
+    
+    // space optimization
+    // tc : O(n) & sc:O(1)
+    public int minimumEnergy(int[] height,int n){
+        
+        int prev = 0;
+        int prev2 = 0;
+        
+        for(int i = 1; i<=n-1; i++){
+            int left = prev + Math.abs(height[i] - height[i-1]);
+            int right = Integer.MAX_VALUE;
+            if(i > 1){
+                right = prev2 + Math.abs(height[i] - height[i-2]);
+            }
+            
+            int cur = Math.min(left,right);
+            prev2 = prev;
+            prev = cur;
+        }
+        
+        return prev;
     }
     
-    private int helper(int[] height,int i,int[] dp){
-        if(i == 0){
-            return 0; 
-        }
-        
-        if(dp[i] != -1){
-            return dp[i];
-        }
-        int left = helper(height,i-1,dp) + Math.abs(height[i]-height[i-1]);
-        int right = Integer.MAX_VALUE;
-        if(i > 1){
-            right = helper(height,i-2,dp) + Math.abs(height[i]-height[i-2]);
-        }
-        
-        dp[i] = Math.min(left,right);
-        
-        return dp[i];
-    }
 }
