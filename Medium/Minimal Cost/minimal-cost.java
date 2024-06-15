@@ -28,6 +28,7 @@ class GFG{
 
 //User function Template for Java
 
+
 class Solution{
     
     // using recursion
@@ -60,34 +61,66 @@ class Solution{
     
     
     // using recursion + memoization
+    // tc:O(n*k) sc:O(n)
+    // public int minimizeCost(int arr[],int N,int K){
+    //     //code here
+    //     int[] dp = new int[N];
+    //     Arrays.fill(dp,-1);
+    //     return helper(arr,N-1,K,dp);
+    // }
+    
+    // public int helper(int[] arr,int idx,int k,int[] dp){
+        
+    //     if(idx == 0){
+    //         return 0;
+    //     }
+        
+    //     if(dp[idx] != -1){
+    //         return dp[idx];
+    //     }
+        
+    //     int cur = Integer.MAX_VALUE;
+    //     int min = Integer.MAX_VALUE;
+        
+    //     for(int j = 1; j<=k; j++){
+    //         if(idx-j >= 0){
+    //             cur = helper(arr,idx-j,k,dp) + Math.abs(arr[idx] - arr[idx-j]);
+    //             min = Math.min(min,cur);
+    //         }
+            
+    //         dp[idx] = min;
+    //     }
+    //     return dp[idx];
+    // }
+    
+    
+    // using tabulation
+    // TC:O(n*k) & sc:O(n)
     public int minimizeCost(int arr[],int N,int K){
         //code here
         int[] dp = new int[N];
-        Arrays.fill(dp,-1);
-        return helper(arr,N-1,K,dp);
+        dp[0] = 0;
+        
+        
+        
+        for(int i = 1; i<N; i++){
+            
+            int min = Integer.MAX_VALUE;
+            int cur = Integer.MAX_VALUE;
+            
+            for(int j = 1; j<=K; j++){
+                if(i-j >= 0){
+                    cur = Math.abs(arr[i] - arr[i-j]) + dp[i-j];
+                    min = Math.min(cur,min);
+                }
+                dp[i] = min;
+            }
+           
+        }
+        
+        return dp[N-1];
+        
     }
     
-    public int helper(int[] arr,int idx,int k,int[] dp){
-        
-        if(idx == 0){
-            return 0;
-        }
-        
-        if(dp[idx] != -1){
-            return dp[idx];
-        }
-        
-        int cur = Integer.MAX_VALUE;
-        int min = Integer.MAX_VALUE;
-        
-        for(int j = 1; j<=k; j++){
-            if(idx-j >= 0){
-                cur = helper(arr,idx-j,k,dp) + Math.abs(arr[idx] - arr[idx-j]);
-                min = Math.min(min,cur);
-            }
-            
-            dp[idx] = min;
-        }
-        return dp[idx];
-    }
 }
+
