@@ -27,31 +27,64 @@ class Solution {
     
     // tabulation
     
+//     public int minPathSum(int[][] grid) {
+//         int n = grid.length;
+//         int m = grid[0].length;
+//         int[][] dp = new int[n+1][m+1];
+       
+//         for(int i = 0; i<n; i++){
+//             for(int j = 0; j<m; j++){
+//                 if(i == 0 && j == 0){
+//                     dp[i][j] = grid[i][j];
+//                 }
+//                 else{
+//                     int u = grid[i][j];
+//                     if(i > 0){
+//                         u += dp[i-1][j];
+//                     }else u += 999999;
+//                     int l = grid[i][j];
+//                     if(j > 0){
+//                         l += dp[i][j-1];
+//                     }else l += 999999;
+                    
+//                     dp[i][j] = Math.min(u,l);
+//                 }
+//             }
+//         }
+//         return dp[n-1][m-1];
+//     }
+    
+    
+    
+    // space optimation
+    
     public int minPathSum(int[][] grid) {
         int n = grid.length;
         int m = grid[0].length;
-        int[][] dp = new int[n+1][m+1];
+        int[] dp = new int[m+1];
        
         for(int i = 0; i<n; i++){
+            int[] cur = new int[m+1];
             for(int j = 0; j<m; j++){
                 if(i == 0 && j == 0){
-                    dp[i][j] = grid[i][j];
+                    cur[j] = grid[i][j];
                 }
                 else{
                     int u = grid[i][j];
                     if(i > 0){
-                        u += dp[i-1][j];
+                        u += dp[j];
                     }else u += 999999;
                     int l = grid[i][j];
                     if(j > 0){
-                        l += dp[i][j-1];
+                        l += cur[j-1];
                     }else l += 999999;
                     
-                    dp[i][j] = Math.min(u,l);
+                    cur[j] = Math.min(u,l);
                 }
             }
+            dp = cur;
         }
-        return dp[n-1][m-1];
+        return dp[m-1];
     }
     
 
