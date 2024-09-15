@@ -1,13 +1,21 @@
 class Solution {
     int sum = 0;
     public int subsetXORSum(int[] nums) {
-        return helper(nums,nums.length,0,0);
+        int n = nums.length;
+        helper(nums,n,0,0);
+        return sum;
     }
     
-    private int helper(int[] nums,int n,int index,int xor){
+    private void helper(int[] nums,int n,int index,int xor){
         if(index == n){
-            return xor;
+            sum += xor;
+            return;
         }
-        return helper(nums,n,index+1,xor^nums[index]) + helper(nums,n,index+1,xor);
+        
+        xor ^= nums[index];
+        helper(nums,n,index+1,xor);
+        xor ^= nums[index];
+        helper(nums,n,index+1,xor);
+        
     }
 }
