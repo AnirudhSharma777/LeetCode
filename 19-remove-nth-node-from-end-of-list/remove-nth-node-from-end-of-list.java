@@ -9,7 +9,7 @@
  * }
  */
 class Solution {
-    private int length(ListNode head){
+    private int length(ListNode head){  // O(n) n is number of nodes
         ListNode cur = head;
         int cnt = 0;
         while(cur != null){
@@ -19,7 +19,7 @@ class Solution {
         return cnt;
     }
 
-    private ListNode DeleteNode(ListNode head,int pos){
+    private ListNode DeleteNode(ListNode head,int pos){ // tc : O(n) & I am using recursion so sc: O(n) 
         if(head == null && pos > 0){
             return null;
         }
@@ -31,7 +31,8 @@ class Solution {
             return head;
         }
     }
-    public ListNode removeNthFromEnd(ListNode head, int n) {
+
+    public ListNode removeNthFromEnd(ListNode head, int n) { // O(n)
         int size = length(head);
         return DeleteNode(head,size-n);
     }
