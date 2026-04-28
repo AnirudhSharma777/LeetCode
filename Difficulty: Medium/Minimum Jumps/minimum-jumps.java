@@ -3,7 +3,7 @@ class Solution {
         // code here
         int n = arr.length;
         
-        if(n <= 1){
+        if(n <= 1) {
             return 0;
         }
         
@@ -11,9 +11,9 @@ class Solution {
             return -1;
         }
         
-        int maxReach = arr[0];
         int jumps = 1;
         int steps = arr[0];
+        int maxReach = arr[0];
         
         for(int i = 1; i<n-1; i++){
             
@@ -30,7 +30,6 @@ class Solution {
                 
                 steps = maxReach - i;
             }
-            
         }
         
         return jumps;
