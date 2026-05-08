@@ -1,8 +1,8 @@
 class Solution {
     public ArrayList<int[]> mergeOverlap(int[][] arr) {
         // Code here
-        ArrayList<int[]> result = new ArrayList<>();
         int n = arr.length;
+        ArrayList<int[]> result = new ArrayList<>();
         
         Arrays.sort(arr,(a,b) -> {
             if(a[0] != b[0]){
@@ -16,21 +16,22 @@ class Solution {
         int start = arr[0][0];
         int end = arr[0][1];
         
-        for(int i = 1; i<n; i++){
-            int val1 = arr[i][0];
-            int val2 = arr[i][1];
-            
-            if(val1 <= end){
-                end = Math.max(end,val2);
-            }else{
+        for(int[] i : arr){
+            int s = i[0];
+            int e = i[1];
+            if(s>=start && s<=end){
+                end = Math.max(end,e);
+            }
+            else{
                 result.add(new int[] {start,end});
-                start = val1;
-                end = val2;
+                start = s;
+                end = e;
             }
         }
         
-        result.add(new int[]{start,end});
+        result.add(new int[] {start,end});
         
         return result;
     }
+    
 }
