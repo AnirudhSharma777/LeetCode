@@ -1,0 +1,8 @@
+<h2><a href="https://www.geeksforgeeks.org/problems/permutations-of-a-given-string-1587115620/1">All String Permutations in Sorted Order</a></h2><h3>Difficulty Level : Difficulty: Hard</h3><hr><div class="problems_problem_content__Xm_eO" style="--text-color: var(--problem-text-color);"><p><span style="font-size: 18px;">Given a string <strong>s</strong>. Find all permutations &nbsp;of a given string. </span><span style="font-size: 18px;">Return the permutations in </span><span style="font-size: 18px;">lexicographically non-decreasing order.</span></p>
+<p><span style="font-size: 18px;"><strong>Examples :</strong></span></p>
+<pre><span style="font-size: 18px;"><strong>Input: </strong>s = "AA"
+<strong>Output: </strong>[<span class="?k">"AA"</span>, <span class="?k">"AA"</span>]<br><strong>Explanation:</strong> There are total 2 permutations, as given in the output.</span>
+</pre>
+<pre><span style="font-size: 18px;"><strong>Input: </strong>s = "ABC"
+<strong>Output: </strong>["ABC", "ACB", "BAC", "BCA", "CAB", "CBA"]<br><strong>Explanation:</strong> There are total 6 permutations, as given in the output.</span></pre>
+<p><span style="font-size: 18px;"><strong>Constraints:</strong><br>1 ≤ s.size() ≤ 5</span></p></div><p><span style=font-size:18px><strong>Company Tags : </strong><br><code>Accolite</code>&nbsp;<code>Amazon</code>&nbsp;<code>OYO Rooms</code>&nbsp;<code>Samsung</code>&nbsp;<code>Citrix</code>&nbsp;<code>MAQ Software</code>&nbsp;<code>Cisco</code>&nbsp;<br><p><span style=font-size:18px><strong>Topic Tags : </strong><br><code>Strings</code>&nbsp;<code>Recursion</code>&nbsp;
